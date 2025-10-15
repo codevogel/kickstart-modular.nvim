@@ -1,6 +1,7 @@
 return {
   { -- Autocompletion
     'saghen/blink.cmp',
+    optional = true,
     event = 'VimEnter',
     version = '1.*',
     dependencies = {
@@ -30,6 +31,8 @@ return {
         },
         opts = {},
       },
+      'allaman/emoji.nvim',
+      'saghen/blink.compat',
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
@@ -76,9 +79,21 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'emoji' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          emoji = {
+            name = 'emoji',
+            module = 'blink.compat.source',
+            -- overwrite kind of suggestion
+            transform_items = function(ctx, items)
+              local kind = require('blink.cmp.types').CompletionItemKind.Text
+              for i = 1, #items do
+                items[i].kind = kind
+              end
+              return items
+            end,
+          },
         },
       },
 
