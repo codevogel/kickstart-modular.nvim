@@ -220,7 +220,14 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
+        svelte = {
+          capabilities = { workspace = { didChangeWatchedFiles = false } },
+          settings = {
+            lint = { unknownAtRules = 'ignore' },
+            typescript = { enable = true, preferences = { importModuleSpecifier = 'non-relative' } },
+            javascript = { enable = true, preferences = { importModuleSpecifier = 'non-relative' } },
+          },
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
