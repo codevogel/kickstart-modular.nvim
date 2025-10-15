@@ -57,5 +57,7 @@ vim.keymap.set('n', '<down>', ':m+<CR>', { desc = 'Move line down' })
 -- Move through text
 vim.keymap.set('n', '<left>', '0', { desc = 'Move to start of line' })
 vim.keymap.set('n', '<right>', '$', { desc = 'Move to end of line' })
+-- Override gg to gg0
+vim.keymap.set('n', 'gg', 'gg0', { desc = 'Go to first character of file' })
 
 -- vim: ts=2 sts=2 sw=2 et
