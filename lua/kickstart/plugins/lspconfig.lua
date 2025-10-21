@@ -280,6 +280,7 @@ return {
         'eslint-lsp',
         'prettier',
         'gdtoolkit',
+        'shfmt',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
