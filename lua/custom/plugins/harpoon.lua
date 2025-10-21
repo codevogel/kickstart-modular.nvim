@@ -7,39 +7,54 @@ return {
     },
     config = function()
       -- basic config from https://github.com/ThePrimeagen/harpoon/tree/harpoon2
+      require('harpoon'):setup()
+    end,
+    keys = function()
       local harpoon = require 'harpoon'
-
-      -- REQUIRED
-      harpoon:setup()
-      -- REQUIRED
-
-      vim.keymap.set('n', '<leader>a', function()
-        harpoon:list():add()
-      end)
-      vim.keymap.set('n', '<leader>hh', function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end, { desc = 'Open harpoon window' })
-
-      vim.keymap.set('n', '<leader><C-h>', function()
-        harpoon:list():select(1)
-      end)
-      vim.keymap.set('n', '<leader><C-j>', function()
-        harpoon:list():select(2)
-      end)
-      vim.keymap.set('n', '<leader><C-k>', function()
-        harpoon:list():select(3)
-      end)
-      vim.keymap.set('n', '<leader><C-l>', function()
-        harpoon:list():select(4)
-      end)
-
-      -- -- Toggle previous & next buffers stored within Harpoon list
-      -- vim.keymap.set('n', '<C-S-P>', function()
-      --    harpoon:list():prev()
-      -- end)
-      -- vim.keymap.set('n', '<C-S-N>', function()
-      --    harpoon:list():next()
-      -- end)
+      return {
+        {
+          '<leader>ha',
+          function()
+            harpoon:list():add()
+          end,
+          desc = 'Harpoon: Add file',
+        },
+        {
+          '<leader>hw',
+          function()
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          desc = 'Harpoon: Open menu',
+        },
+        {
+          '<leader>hh',
+          function()
+            harpoon:list():select(1)
+          end,
+          desc = 'Harpoon: Go to file 1',
+        },
+        {
+          '<leader>hj',
+          function()
+            harpoon:list():select(2)
+          end,
+          desc = 'Harpoon: Go to file 2',
+        },
+        {
+          '<leader>hk',
+          function()
+            harpoon:list():select(3)
+          end,
+          desc = 'Harpoon: Go to file 3',
+        },
+        {
+          '<leader>hl',
+          function()
+            harpoon:list():select(4)
+          end,
+          desc = 'Harpoon: Go to file 4',
+        },
+      }
     end,
   },
   -- Indicator of current harpoon selection in Lualine --
