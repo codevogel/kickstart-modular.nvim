@@ -17,11 +17,12 @@ return {
     },
     keys = {
       { '<leader>zc', '<cmd>CopilotChat<CR>', mode = 'n', desc = 'Open Copilot Chat' },
-      { '<leader>ze', '<cmd>CopilotChatExplain<CR>', mode = 'n', desc = 'Explain code with Copilot Chat' },
-      { '<leader>zr', '<cmd>CopilotChatReview<CR>', mode = 'n', desc = 'Review code with Copilot Chat' },
-      { '<leader>zf', '<cmd>CopilotChatFix<CR>', mode = 'n', desc = 'Fix code with Copilot Chat' },
-      { '<leader>zo', '<cmd>CopilotChatOptimize<CR>', mode = 'n', desc = 'Optimize code with Copilot Chat' },
+      { '<leader>ze', '<cmd>CopilotChatExplain<CR>', mode = 'v', desc = 'Explain code with Copilot Chat' },
+      { '<leader>zr', '<cmd>CopilotChatReview<CR>', mode = 'v', desc = 'Review code with Copilot Chat' },
+      { '<leader>zf', '<cmd>CopilotChatFix<CR>', mode = 'v', desc = 'Fix code with Copilot Chat' },
+      { '<leader>zo', '<cmd>CopilotChatOptimize<CR>', mode = 'v', desc = 'Optimize code with Copilot Chat' },
       { '<leader>zd', '<cmd>CopilotChatDocs<CR>', mode = 'n', desc = 'Generate docs with Copilot Chat' },
+      { '<leader>zd', '<cmd>CopilotChatDocs<CR>', mode = 'v', desc = 'Generate docs with Copilot Chat' },
     },
   },
 }
