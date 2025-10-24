@@ -17,6 +17,7 @@ return {
     },
     keys = {
       { '<leader>zc', '<cmd>CopilotChat<CR>', mode = 'n', desc = 'Open Copilot Chat' },
+      { '<leader>zc', '<cmd>CopilotChat<CR>', mode = 'v', desc = 'Open Copilot Chat' },
       { '<leader>ze', '<cmd>CopilotChatExplain<CR>', mode = 'v', desc = 'Explain code with Copilot Chat' },
       { '<leader>zr', '<cmd>CopilotChatReview<CR>', mode = 'v', desc = 'Review code with Copilot Chat' },
       { '<leader>zf', '<cmd>CopilotChatFix<CR>', mode = 'v', desc = 'Fix code with Copilot Chat' },

@@ -16,16 +16,19 @@ return {
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
+        local filename = vim.fn.expand '%:t'
+
+        -- Skip formatting entirely for *_spec.sh files
+        if filename:match '_spec%.sh$' then
+          return nil
+        end
+
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
           return {
             timeout_ms = 500,
-            lsp_format = 'fallback',
           }
         end
       end,
@@ -37,11 +40,23 @@ return {
         sh = { 'shfmt' },
         bash = { 'shfmt' },
         zsh = { 'shfmt' },
+        markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
+        lsp_format = 'fallback',
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      },
+      formatters = {
+        shfmt = {
+          condition = function()
+            -- ignore filenames ending in _spec.sh
+            local filename = vim.fn.expand '%:t' -- %:t = tail (just the filename)
+            local result = not filename:match '_spec%.sh$'
+            return result
+          end,
+        },
       },
     },
   },
