@@ -28,6 +28,7 @@ return {
           --     require('luasnip.loaders.from_vscode').lazy_load()
           --   end,
           -- },
+          'Kaiser-Yang/blink-cmp-avante',
         },
         opts = {},
       },
@@ -79,7 +80,7 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev', 'emoji' },
+        default = { 'avante', 'lsp', 'path', 'snippets', 'lazydev', 'emoji' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
           emoji = {
@@ -93,6 +94,13 @@ return {
               end
               return items
             end,
+          },
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {
+              -- options for blink-cmp-avante
+            },
           },
         },
       },
